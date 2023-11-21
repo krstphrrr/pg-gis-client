@@ -1,0 +1,19 @@
+version: '3'
+services:
+
+  postgis-client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+     - 127.0.0.1:5434:5432
+    volumes:
+     - ./external:/external
+    networks:
+      - pg-network
+
+
+networks:
+  pg-network:
+    external: true
